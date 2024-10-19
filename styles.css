@@ -1,0 +1,152 @@
+/* Reset de estilos básicos */
+body, h1, p, footer {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo general del cuerpo */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #89c2fc; /* Fondo claro */
+    color: #d02626;
+    min-height: 100vh; /* Asegura que el contenido rellene la pantalla */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Header */
+header {
+    border-bottom: 2px solid #eaeaea;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh; /* Ocupa al menos el 60% de la altura de la pantalla */
+}
+
+/* Logotipo */
+header .navbar-brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: zoomIn 1.5s ease-in-out forwards;
+}
+
+/* Animación de Zoom In */
+@keyframes zoomIn {
+    0% {
+        transform: scale(0.2); 
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Logotipo imagen */
+header .navbar-brand img {
+    max-width: 80%; /* Ajusta el tamaño para que se vea bien en móviles */
+    height: auto;
+}
+
+/* Sección de descripción */
+header .description {
+    text-align: center;
+    margin-top: 20px;
+    padding: 0 15px;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+/* Contenedor de botones centrado y distribuido */
+header .social-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center; /* Alinea al centro verticalmente */
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Estilos de botones de redes sociales */
+header .btn {
+    border-radius: 30px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    color: #fff;
+    min-width: 140px;
+    text-align: center;
+}
+
+/* Colores personalizados */
+.btn-facebook {
+    background-color: #3b5998; 
+}
+
+.btn-whatsapp {
+    background-color: #25d366; 
+}
+
+.btn-instagram {
+    background-color: #e4405f; 
+}
+
+.btn-tiktok {
+    background-color: #000000; 
+}
+
+.btn-maps {
+    background-color: #4285f4; 
+}
+
+/* Hover Effects */
+header .btn:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    padding: 15px 0;
+    width: 100%;
+    min-height: 10vh; /* Ocupa el 10% de la altura de la pantalla */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        align-items: center;
+        padding: 20px 0;
+    }
+
+    header .navbar-brand {
+        width: 80%;
+    }
+
+    header .btn {
+        font-size: 14px;
+        padding: 10px 20px;
+        margin-bottom: 5px;
+        min-width: 80%; /* Ocupa el 80% del ancho del contenedor en móviles */
+    }
+
+    header .description {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
+    footer {
+        font-size: 12px;
+    }
+}
