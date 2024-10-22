@@ -1,78 +1,74 @@
-<!-- Script para animar los gráficos -->
-<script>
-    // Función para animar un gráfico desde 0% a un valor final
-    function animateChart(chart, finalValue) {
-        let currentValue = 0;
-        const step = finalValue / 100;
-        const interval = setInterval(() => {
-            if (currentValue >= finalValue) {
-                clearInterval(interval);
-            } else {
-                currentValue += step;
-                chart.data.datasets[0].data = [currentValue, 100 - currentValue];
-                chart.update();
-            }
-        }, 20); // Ajuste la velocidad de la animación cambiando el tiempo de intervalo
-    }
-
-    // Configuración de "Nuevos Clientes"
-    const newClientsCtx = document.getElementById('newClientsChart').getContext('2d');
-    const newClientsChart = new Chart(newClientsCtx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Clientes Nuevos', 'Clientes Existentes'],
-            datasets: [{
-                data: [0, 100], // Inicialmente 0% para animación
-                backgroundColor: ['#4caf50', '#f1f1f1'], // Colores
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            cutout: '70%',
-        }
-    });
-
-    // Configuración de "Uso de WhatsApp"
-    const whatsappCtx = document.getElementById('whatsappUsageChart').getContext('2d');
-    const whatsappChart = new Chart(whatsappCtx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Usan WhatsApp', 'No usan WhatsApp'],
-            datasets: [{
-                data: [0, 100], // Inicialmente 0% para animación
-                backgroundColor: ['#25d366', '#f1f1f1'], // Colores
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            cutout: '70%',
-        }
-    });
-
-    // Configuración de "Uso de Celular"
-    const mobileCtx = document.getElementById('mobileUsageChart').getContext('2d');
-    const mobileChart = new Chart(mobileCtx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Usuarios con Celular', 'Usuarios sin Celular'],
-            datasets: [{
-                data: [0, 100], // Inicialmente 0% para animación
-                backgroundColor: ['#4285f4', '#f1f1f1'], // Colores
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            cutout: '70%',
-        }
-    });
-
-    // Iniciar animaciones para cada gráfico
-    window.onload = () => {
-        animateChart(newClientsChart, 75); // Animar a 75%
-        animateChart(whatsappChart, 100); // Animar a 100%
-        animateChart(mobileChart, 99); // Animar a 99%
+document.addEventListener('DOMContentLoaded', function () {
+    // Datos para los gráficos
+    const newClientsData = {
+        labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo'],
+        datasets: [{
+            label: 'Nuevos Clientes',
+            data: [30, 50, 70, 20, 90],
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1,
+        }]
     };
-</script>
+
+    const whatsappUsageData = {
+        labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo'],
+        datasets: [{
+            label: 'Uso de WhatsApp',
+            data: [20, 40, 60, 80, 100],
+            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+            borderColor: 'rgba(153, 102, 255, 1)',
+            borderWidth: 1,
+        }]
+    };
+
+    const qrUsageData = {
+        labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo'],
+        datasets: [{
+            label: 'Uso de Código QR',
+            data: [50, 70, 90, 30, 60],
+            backgroundColor: 'rgba(255, 159, 64, 0.2)',
+            borderColor: 'rgba(255, 159, 64, 1)',
+            borderWidth: 1,
+        }]
+    };
+
+    // Opciones para los gráficos
+    const options = {
+        responsive: true,
+        animation: {
+            tension: {
+                duration: 1000,
+                easing: 'easeInOutQuad',
+                from: 1,
+                to: 0,
+                loop: true
+            },
+            x: {
+                duration: 1000
+            },
+            y: {
+                duration: 1000
+            }
+        }
+    };
+
+    // Crear gráficos
+    const newClientsChart = new Chart(document.getElementById('newClientsChart'), {
+        type: 'line',
+        data: newClientsData,
+        options: options
+    });
+
+    const whatsappUsageChart = new Chart(document.getElementById('whatsappUsageChart'), {
+        type: 'line',
+        data: whatsappUsageData,
+        options: options
+    });
+
+    const qrUsageChart = new Chart(document.getElementById('qrUsageChart'), {
+        type: 'line',
+        data: qrUsageData,
+        options: options
+    });
+});

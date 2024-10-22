@@ -16,6 +16,42 @@ body {
     justify-content: space-between;
 }
 
+/* Background Container */
+
+.background-container {
+    position: relative; /* Necesario para el pseudo-elemento */
+    background-image: url('Img/bg-Tech_modern.png'); /* Reemplaza con tu ruta de imagen */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Para efecto parallax */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+    overflow: hidden; /* Para asegurar que el pseudo-elemento no se desborde */
+}
+
+/* Pseudo-elemento para superponer */
+.background-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Color negro con 50% de opacidad, ajusta según prefieras */
+    z-index: 1; /* Coloca la capa por debajo del contenido */
+}
+
+/* Para que el contenido esté por encima del pseudo-elemento */
+.background-container > * {
+    position: relative;
+    z-index: 2;
+}
+
+
 /* Header */
 header {
     border-bottom: 2px solid #eaeaea;
@@ -52,21 +88,24 @@ header .navbar-brand {
 
 /* Logotipo imagen */
 header .navbar-brand img {
-    max-width: 80%; /* Ajusta el tamaño para que se vea bien en móviles */
+    max-width: 120%; /* Ajusta el tamaño para que se vea bien en móviles */
     height: auto;
 }
 
 /* Sección de descripción */
-header .description {
+.description {
     text-align: center;
-    margin-top: 20px;
-    padding: 0 15px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
     font-size: 1.1rem;
     line-height: 1.5;
+    margin-top: 20px;
 }
 
 /* Contenedor de botones centrado y distribuido */
-header .social-buttons {
+.social-buttons {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -76,40 +115,46 @@ header .social-buttons {
 }
 
 /* Estilos de botones de redes sociales */
-header .btn {
-    border-radius: 30px;
-    font-weight: bold;
-    transition: all 0.3s ease-in-out;
+.social-buttons a {
+    margin: 5px;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
     color: #fff;
+    border-radius: 15px;
     min-width: 140px;
     text-align: center;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4); /* Efecto de resplandor blanco suave */
 }
 
 /* Colores personalizados */
-.btn-facebook {
-    background-color: #3b5998; 
-}
-
-.btn-whatsapp {
-    background-color: #25d366; 
-}
-
-.btn-instagram {
-    background-color: #e4405f; 
-}
-
-.btn-tiktok {
-    background-color: #000000; 
-}
-
-.btn-maps {
-    background-color: #4285f4; 
-}
+.btn-facebook { background-color: #3b5998; }
+.btn-whatsapp { background-color: #25d366; }
+.btn-instagram { background-color: #e4405f; }
+.btn-tiktok { background-color: #000000; }
+.btn-maps { background-color: #4285f4; }
 
 /* Hover Effects */
-header .btn:hover {
+.social-buttons a:hover {
     opacity: 0.8;
     transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); /* Efecto de resplandor más intenso */
+}
+
+/* Tarjetas de estadísticas */
+.stats-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Títulos en las tarjetas */
+h5 {
+    font-size: 1.2rem;
 }
 
 /* Footer */
@@ -134,14 +179,14 @@ footer {
         width: 80%;
     }
 
-    header .btn {
+    .social-buttons a {
         font-size: 14px;
         padding: 10px 20px;
         margin-bottom: 5px;
         min-width: 80%; /* Ocupa el 80% del ancho del contenedor en móviles */
     }
 
-    header .description {
+    .description {
         font-size: 1rem;
         padding: 0 10px;
     }
@@ -149,4 +194,48 @@ footer {
     footer {
         font-size: 12px;
     }
+
+  /*Charts*/
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #89c2fc;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.col {
+    flex: 1;
+    margin: 0 10px;
+}
+
+.stats-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+  
 }
