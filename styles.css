@@ -9,7 +9,7 @@ body, h1, p, footer {
 body {
     font-family: 'Arial', sans-serif;
     background-color: #89c2fc; /* Fondo claro */
-    color: #d02626;
+    color: #252323;
     min-height: 100vh; /* Asegura que el contenido rellene la pantalla */
     display: flex;
     flex-direction: column;
